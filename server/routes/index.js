@@ -5,6 +5,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
+
 router.get("/bot",function(req, res, next) {
   let data={
     key:"Naigai",
@@ -24,5 +25,10 @@ router.get("/bot",function(req, res, next) {
     ]
   }
   res.json(data)
+});
+
+router.post('/picture', function(req, res, next) {
+  console.log(req.body)
+  res.send('ok')
 });
 module.exports = router;
