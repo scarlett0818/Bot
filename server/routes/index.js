@@ -39,7 +39,7 @@ router.post('/picture', function(req, res, next) {
 //         }
 //     ]
 // })
-  res.send("ok")
+  res.send("拼命找图中")
 send(req.body.response_url,req.body.text)
 });
 
@@ -60,7 +60,7 @@ async function send(url,text){
   try {
    let res = await rp(option_1)
    result = JSON.stringify(res, null, 4)
-   console.log(result)
+  //  console.log(result)
   } catch (error) {
     console.log(error)
   }
@@ -72,11 +72,7 @@ async function send(url,text){
      body:{
       "response_type": "in_channel",
       "text": result,
-      "attachments": [
-        {
-            "text":"Partly cloudy today and tomorrow"
-        }
-    ]
+    
      }
    } 
    console.log(option)
