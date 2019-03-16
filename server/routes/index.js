@@ -46,13 +46,32 @@ send(req.body.response_url,req.body.text)
 module.exports = router;
 
 async function send(url,text){
+  let option_1 = {
+    url:"https://www.doutula.com/api/search",
+    method:"get",
+    json:true,
+    qs:{
+      keyword:text
+    }
+  } 
+  console.log(option_1)
+
+  let result = ""
+  try {
+   let res = await rp(option_1)
+   result = JSON.stringify(res, null, 4)
+   console.log(result)
+  } catch (error) {
+    console.log(error)
+  }
+
    let option = {
      url:url,
      method:"post",
      json:true,
      body:{
       "response_type": "in_channel",
-      "text": text,
+      "text": result,
       "attachments": [
         {
             "text":"Partly cloudy today and tomorrow"
