@@ -63,6 +63,10 @@ async function send(url,text){
   //  console.log(result)
   } catch (error) {
     console.log(error)
+    result = {
+      "response_type": "ephemeral",
+      "text": "再试一次"
+    }
   }
 
    let option = {
