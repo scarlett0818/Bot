@@ -56,11 +56,10 @@ async function send(url,text){
   } 
   console.log(option_1)
 
-  let result = ""
+  let picture_url 
   try {
    let res = await rp(option_1)
-   result = JSON.stringify(res, null, 4)
-  //  console.log(result)
+   picture_url= res
   } catch (error) {
     console.log(error)
     result = {
@@ -69,14 +68,34 @@ async function send(url,text){
     }
   }
 
+  let result =[]
+  let list = picture_url.data.list
+  //console.log(list)
+  for(var i= 0; i<list.length;i++){
+   let item = {
+      "type": "image",
+      "image_url": list[i].image_url,
+      "alt_text": "Example Image"
+    }
+   result.push(item)
+  }
+  result.unshift({
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": " *"+text+"* 找到了."
+      }
+    })
+  console.log(result)
+    
+
    let option = {
      url:url,
      method:"post",
      json:true,
      body:{
-      "response_type": "in_channel",
-      "text": result,
-    
+      "blocks":result
+  
      }
    } 
    console.log(option)
