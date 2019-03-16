@@ -30,15 +30,16 @@ router.get("/bot",function(req, res, next) {
 
 router.post('/picture', function(req, res, next) {
   console.log(req.body)
-  res.json({
-    "response_type": "in_channel",
-    "text": "It's 80 degrees right now.",
-    "attachments": [
-        {
-            "text":"Partly cloudy today and tomorrow"
-        }
-    ]
-})
+//   res.json({
+//     "response_type": "in_channel",
+//     "text": "It's 80 degrees right now.",
+//     "attachments": [
+//         {
+//             "text":"Partly cloudy today and tomorrow"
+//         }
+//     ]
+// })
+  res.send("ok")
 send(req.body.response_url)
 });
 module.exports = router;
