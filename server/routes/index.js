@@ -40,18 +40,19 @@ router.post('/picture', function(req, res, next) {
 //     ]
 // })
   res.send("ok")
-send(req.body.response_url)
+send(req.body.response_url,req.body.text)
 });
+
 module.exports = router;
 
-async function send(url){
+async function send(url,text){
    let option = {
      url:url,
      method:"post",
      json:true,
      body:{
       "response_type": "in_channel",
-      "text": "It's 80 degrees right now.",
+      "text": text,
       "attachments": [
         {
             "text":"Partly cloudy today and tomorrow"
