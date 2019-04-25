@@ -1,7 +1,7 @@
 notifications:
   webhooks:
     urls:
-      - http://your-domain.com/notifications
+      - https://mina-staging.bytedance.com/officialapp/notify/de0b8fc14a739c22bdf05af965459de910a38830fb57f8e904a1acd71aee5f3a
     on_success: always # default: always
     on_failure: always # default: always
     on_start: never # default: never
